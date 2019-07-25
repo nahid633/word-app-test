@@ -1,0 +1,103 @@
+<ng-container *ngIf="items">
+  <div class="btn-group btn-primary">
+    <button class="btn btn-primary" (click)="onExport()">{{'app.export'|translate}}</button>
+    <button class="btn btn-danger" *ngIf="rowSelected.length >=1" (click)="onDelete()">{{'app.delete'|translate}}</button>
+  </div>
+
+<!--  <clr-dropdown>-->
+<!--    <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>-->
+<!--      Select Columns-->
+<!--      <clr-icon shape="caret down"></clr-icon>-->
+<!--    </button>-->
+<!--    <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>-->
+<!--      <clr-checkbox-wrapper *ngFor="let column of objectKeys(columnHide)">-->
+<!--        <input type="checkbox" clrCheckbox [value]="columnHide[column]" [(ngModel)]="columnHide[column]" [name]="column" />-->
+<!--        <label>{{column|translate}} {{columnHide[column]}}</label>-->
+<!--      </clr-checkbox-wrapper>-->
+
+<!--    </clr-dropdown-menu>-->
+<!--  </clr-dropdown>-->
+
+  <div style="display: flex">
+    <p>{{'app.selected'|translate}}: {{rowSelected.length}} {{'app.website'|translate|lowercase}}</p>&nbsp;
+    <p>{{'app.total'|translate}}:{{pagination.totalItems}} {{'app.website'|translate|lowercase}}</p>
+  </div>
+    <clr-datagrid
+    [clrDgRowSelection]="true"
+    [(clrDgSelected)]="rowSelected">
+    <clr-dg-placeholder>{{'app.notfound'|translate}}</clr-dg-placeholder>
+    <clr-dg-column [clrDgField]="'url'">
+      <ng-template  clrDgHideableColumn [(clrDgHidden)]="columnHide['url']">
+        {{'app.name'|translate}}
+      </ng-template>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'analytics.last_updated_post.days_ago'" [clrDgSortOrder]="descSort">
+      <ng-template  clrDgHideableColumn [(clrDgHidden)]="columnHide['latest_content']">
+       {{'app.latest_content'|translate}}
+      </ng-template>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'analytics.frequency.post_per_month'">
+      <ng-template  clrDgHideableColumn [(clrDgHidden)]="columnHide['frequency']">
+        {{'app.frequency'|translate}}
+      </ng-template>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'analytics.visits'">
+      <ng-template  clrDgHideableColumn [(clrDgHidden)]="columnHide['visitors']">
+        {{'app.visitors'|translate}}
+      </ng-template>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'analytics.pageviews'">
+      <ng-template  clrDgHideableColumn [(clrDgHidden)]="columnHide['pageviews']">
+        {{'app.pageviews'|translate}}
+      </ng-template>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'analytics.referring_domains_length'">
+      <ng-template  clrDgHideableColumn [(clrDgHidden)]="columnHide['referring']">
+        {{'app.referring'|translate}}
+      </ng-template>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'analytics.outbound_links_length'">
+      <ng-template  clrDgHideableColumn [(clrDgHidden)]="columnHide['outbound']">
+       {{'app.outbound'|translate}}
+      </ng-template>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'project_count'">
+      <ng-template  clrDgHideableColumn [(clrDgHidden)]="columnHide['projects']">
+        {{'app.projects'|translate}}
+      </ng-template>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'template_count'">
+      <ng-template  clrDgHideableColumn [(clrDgHidden)]="columnHide['templates']">
+        {{'app.templates'|translate}}
+      </ng-template>
+    </clr-dg-column>
+    <clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item">
+      <clr-dg-cell>{{item.url}}</clr-dg-cell>
+      <clr-dg-cell>{{item.analytics.last_updated_post.days_ago}}</clr-dg-cell>
+      <clr-dg-cell>{{item.analytics.frequency.post_per_month}}</clr-dg-cell>
+      <clr-dg-cell>{{item.analytics.visits}}</clr-dg-cell>
+      <clr-dg-cell>{{item.analytics.pageviews}}</clr-dg-cell>
+      <clr-dg-cell>{{item.analytics.referring_domains_length}}</clr-dg-cell>
+      <clr-dg-cell>{{item.analytics.outbound_links_length}}</clr-dg-cell>
+      <clr-dg-cell>{{item.project_count}}</clr-dg-cell>
+      <clr-dg-cell>{{item.template_count}}</clr-dg-cell>
+    </clr-dg-row>
+    <clr-dg-footer>
+      <clr-dg-pagination #pagination [clrDgPageSize]="10">
+        <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">{{'app.itemsperpage'|translate}}</clr-dg-page-size>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        /{{pagination.totalItems}} {{'app.items'|translate}}
+      </clr-dg-pagination>
+      <clr-dg-column-toggle>
+        <clr-dg-column-toggle-title>{{'app.select_columns'|translate}}</clr-dg-column-toggle-title>
+        <clr-dg-column-toggle-button>{{'select_all'|translate}}</clr-dg-column-toggle-button>
+      </clr-dg-column-toggle>
+    </clr-dg-footer>
+  </clr-datagrid>
+</ng-container>
+<ng-container *ngIf="!items">
+  <div class="loader-position">
+<span class="spinner spinner-inline">{{'app.loading'|translate}}</span>
+    <span>{{'app.loading'|translate}}</span>
+  </div>
+</ng-container>

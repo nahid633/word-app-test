@@ -1,0 +1,32 @@
+<header class="header-6">
+  <div class="branding">
+    <a [routerLink]="['/']" class="nav-link">
+      <img src="assets/images/Wordapp_logo_b1.svg" alt="logo">
+    </a>
+  </div>
+  <div class="header-nav">
+    <a class="nav-link nav-text" [routerLink]="['/websites']" [ngClass]="{'active':tab===1}">{{'app.website'|translate}}</a>
+    <a class="nav-link nav-text" [routerLink]="['/documentation']" [ngClass]="{'active':tab===2}">{{'app.documentation'|translate}}</a>
+  </div>
+  <div class="header-actions">
+    <clr-dropdown>
+      <button class="nav-icon" clrDropdownTrigger>
+        <clr-icon shape="language"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <div clrDropdownItem style="" [ngClass]="{'active': lang==='en'}" (click)="changeLanguage('en')">
+          <img src="assets/icons/en.png"/>
+<span class="left-pad">English</span>
+        </div>
+        <div clrDropdownItem [ngClass]="{'active': lang==='tr'}" (click)="changeLanguage('tr')">
+          <img src="assets/icons/tr.png"/>
+          <span class="left-pad">Türkçe</span>
+          </div>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</header>
+<div class="content">
+<router-outlet></router-outlet>
+</div>

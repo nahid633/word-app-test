@@ -1,0 +1,180 @@
+  <div class="main-container">
+    <div class="content-container">
+      <clr-vertical-nav>
+        <a clrVerticalNavLink (click)="tab='code'" [ngClass]="{'active':tab === 'code'}">Code</a>
+        <a clrVerticalNavLink (click)="tab='build'" [ngClass]="{'active':tab === 'build'}">Build</a>
+        <a clrVerticalNavLink (click)="tab='test'" [ngClass]="{'active':tab === 'test'}">Test</a>
+        <div class="nav-divider"></div>
+        <a clrVerticalNavLink (click)="tab='credit'" [ngClass]="{'active':tab === 'credit'}">Credit</a>
+      </clr-vertical-nav>
+      <div class="content-area">
+<ng-container *ngIf="tab==='code'">
+  <div class="clr-row">
+    <div class="clr-col-lg-6 clr-col-md-6 clr-col-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+            Hide/Show
+          </div>
+          <div class="card-text">
+            For hide and show in the footer of table there is 3 lined icon.while clicking on it.
+            You can select columns to show.
+            Moreover, there is select All button for selecting all columns.
+            Addition to that.when user select a columns and leave the page next time when user comes that page.it will show selected columns.(page remembers user configurations.)
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clr-col-lg-6 clr-col-md-6 clr-col-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+            Search/Filter and sorting
+          </div>
+          <div class="card-text">
+            For search/filter there is a filter icon in every column next to title. You can open and filter data based on that column.
+            For sorting you have to click on column itself.
+            Default latest content is ascending that's why there is down icon there.You can change by clicking on coloumn.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clr-row">
+    <div class="clr-col-lg-6 clr-col-md-6 clr-col-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+            Delete and Export button
+          </div>
+          <div class="card-text">
+            User can select multiple rows to delete(it only deletes in the client side) and export to excel(xlss) file.
+            While there is not selected column export button will export all the data.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clr-col-lg-6 clr-col-md-6 clr-col-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+            Loading data
+          </div>
+          <div class="card-text">
+            For loading data from file.I used service and help of rxjs library.
+            "RxJS" is a library for reactive programming using Observables,
+            to make it easier to compose asynchronous or callback-based code.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clr-row">
+    <div class="clr-col-lg-6 clr-col-md-6 clr-col-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+          Language
+          </div>
+          <div class="card-text">
+          Website translated into 2 languages: English and Turkish.You can use translation icon in the top right corner of website(in the header)
+            It also saves the user language for next time.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clr-col-lg-6 clr-col-md-6 clr-col-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+          Next Plans
+          </div>
+          <div class="card-text">
+        In this website, angular-universal and redux didn't applied. For Redux, Developer thinks that, for this website(like 1-2 pages)
+          it is not right, it will load pages rather that help.
+            For angular universal, when SEO part will provided. developer can apply server-side rendering.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ng-container>
+<ng-container *ngIf="tab==='build'">
+  <div class="clr-row">
+    <div class="clr-col-lg-6 clr-col-md-6 clr-col-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+            Serve
+          </div>
+          <div class="card-text">
+        For Serving on localhost. You have to first "npm install" then "ng serve"(if you are starter you have to have node and npm angular global.)
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clr-col-lg-6 clr-col-md-6 clr-col-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+            Build
+          </div>
+          <div class="card-text">
+            For building website, "ng build --prod" --aot=true|false (Build using Ahead of Time compilation.)
+            Copy everything within the output folder (dist/ by default) to a folder on the server.
+            Configure the server to redirect requests for missing files to index.html
+            <a href="https://angular.io/cli/build" target="_blank">More info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ng-container>
+<ng-container *ngIf="tab==='test'">
+  <div class="clr-row">
+    <div class="clr-col-lg-6 clr-col-md-6 clr-col-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+            Test
+          </div>
+          <div class="card-text">
+            The Angular CLI downloads and install everything you need to test an Angular application with the Jasmine test framework.
+            The project you create with the CLI is immediately ready to test. Just run the ng test CLI command:
+            "ng-test"
+            The test file extension must be .spec.ts so that tooling can identify it as a file with tests (AKA, a spec file).
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-container>
+<ng-container *ngIf="tab==='credit'">
+  <div class="clr-row">
+    <div class="clr-col-lg-6 clr-col-md-6 clr-col-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+           Credits
+          </div>
+          <div class="card-text">
+            1.Clarity design : For Design templates.
+            <br>
+            2.Flag icons - http://www.famfamfam.com/lab/icons/flags/
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-container>
+
+
+      </div>
+    </div>
+  </div>

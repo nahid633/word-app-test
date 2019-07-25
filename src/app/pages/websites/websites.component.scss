@@ -1,0 +1,37 @@
+.loader-position {
+  position: absolute;
+  top: 50%;
+  left: 49%
+}
+*{
+  color:#333333;
+}
+.btn.btn-danger {
+  border-color: #FF3368;
+  background-color: #FF3368;
+  color: #F0F4F5;
+}
+.btn.btn-danger:hover, .btn.btn-danger:active{
+  border-color: #FD676A;
+  background-color: #FD676A;
+}
+.btn.btn-primary {
+  border-color: #00ADEE;
+  background-color: #00ADEE;
+  color: #F0F4F5;
+}
+.btn.btn-primary:hover, .btn.btn-primary:active{
+  border-color: #007FAE;
+  background-color: #007FAE;
+}
+::ng-deep.clr-checkbox-wrapper input[type=checkbox]:checked+label::before {
+  background: #00ADEE!important;
+  border: 0;
+}
+.datagrid-row.datagrid-selected {
+  color: #333333;
+  background-color: #dddddd;
+}
+.datagrid-row:hover {
+  background-color: #eee;
+}
